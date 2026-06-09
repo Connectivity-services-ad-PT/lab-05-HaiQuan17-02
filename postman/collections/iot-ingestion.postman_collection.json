@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "Lab 05 IoT Ingestion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Reading",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"ESP32-LAB-A01\",\n  \"metric\": \"temperature\",\n  \"value\": 31.5,\n  \"unit\": \"celsius\",\n  \"timestamp\": \"2026-05-13T08:30:00+07:00\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/readings",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "readings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Latest Readings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/readings/latest",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "readings",
+            "latest"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
